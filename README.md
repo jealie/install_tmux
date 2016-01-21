@@ -1,4 +1,4 @@
-# Script for installing **tmux** where you don't have root access
+### Script for installing **tmux** where you don't have root access
 
 It is assumed that standard compilation tools (a C/C++ compiler with autoconf) are available.
 
