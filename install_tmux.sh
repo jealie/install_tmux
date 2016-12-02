@@ -33,18 +33,25 @@ tar xvzf ncurses.tar.gz
 # configure and compile #
 #########################
 
+# get the number of CPU cores for build
+if [ -f /proc/cpuinfo ]; then
+    CPUS=`grep processor /proc/cpuinfo | wc -l`
+else
+    CPUS=2
+fi
+
 # libevent
 cd $HOME/tmux_tmp/libevent*
 ./autogen.sh
 ./configure --prefix=$HOME/local --disable-shared
-make -j2
+make -j$CPUS
 make install
 
 # ncurses
 cd $HOME/tmux_tmp/ncurses-*
 export CPPFLAGS="-P" # otherwise ncurse fails to build on gcc 5.x (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61832)
 ./configure --prefix=$HOME/local --without-debug --without-shared --without-normal --without-ada
-make -j2
+make -j$CPUS
 make install
 
 # tmux
@@ -52,13 +59,13 @@ cd $HOME/tmux_tmp/tmux*
 ./autogen.sh
 ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
 CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib"
-make -j2
+make -j$CPUS
 cp tmux $HOME/local/bin
 
 # cleanup
 rm -rf $HOME/tmux_tmp
 
-echo "$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH."
+echo -e "\n\n$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH.\n"
 # e.g. to export path
 # export PATH=$PATH:/path/to/dir1
 
