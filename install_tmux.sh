@@ -42,6 +42,7 @@ make install
 
 # ncurses
 cd $HOME/tmux_tmp/ncurses-*
+export CPPFLAGS="-P" # otherwise ncurse fails to build on gcc 5.x (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61832)
 ./configure --prefix=$HOME/local --without-debug --without-shared --without-normal --without-ada
 make -j2
 make install
