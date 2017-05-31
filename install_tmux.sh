@@ -65,7 +65,7 @@ cp tmux $HOME/local/bin
 # cleanup
 rm -rf $HOME/tmux_tmp
 
-echo -e "\n\n$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH.\n"
-# e.g. to export path
-# export PATH=$PATH:/path/to/dir1
+echo -e "\n\n$HOME/local/bin/tmux is now available. Make it accessible by adding to your .bashrc or .bash_profile:"
+echo -e "\nSolution 1: append it to your PATH:\n  export PATH=\$PATH:$HOME/local/bin"
+echo -e "\nSolution 2: create an alias:\n  alias tmux=$HOME/local/bin/tmux"
 
