@@ -7,9 +7,11 @@ This script fetches and compiles the latest version of [**tmux**](https://github
 One-line install:
 
 ```bash
-bash install_tmux.sh
+git clone https://github.com/jealie/install_tmux.git && ./install_tmux/install_tmux.sh
 ```
 
 The latest version of tmux will be installed in `$HOME/local/bin/tmux`.
 
-Note: if you are using this script to get the latest version of tmux on a fresh Ubuntu install, get the dependencies with: `sudo apt-get install curl libtool pkg-config`
+Note: if you are using this script to get the latest version of tmux on a fresh Ubuntu install, get the dependencies with:
+
+`sudo apt-get install curl libtool pkg-config automake`
