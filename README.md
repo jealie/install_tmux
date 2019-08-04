@@ -14,4 +14,4 @@ The latest version of tmux will be installed in `$HOME/local/bin/tmux`.
 
 Note: if you are using this script to get the latest version of tmux on a fresh Ubuntu install, get the dependencies with:
 
-`sudo apt-get install curl libtool pkg-config automake`
+`sudo apt-get install curl libtool pkg-config automake bison`
